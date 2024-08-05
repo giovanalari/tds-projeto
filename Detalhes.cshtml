@@ -1,0 +1,54 @@
+@model Pedido
+
+<h2>Detalhes do Pedido</h2>
+
+<div>
+    <h4>Informações do Pedido</h4>
+    <p><strong>ID:</strong> @Model.Id</p>
+    <p><strong>Status:</strong> @Model.Status</p>
+    <p><strong>Data de Entrada:</strong> @Model.DataEntrada.ToString("dd/MM/yyyy")</p>
+    <p><strong>Responsável:</strong> @Model.Responsavel</p>
+</div>
+
+<div>
+    <h4>Informações do Cliente</h4>
+    <p><strong>Nome:</strong> @Model.Cliente.Nome</p>
+    <p><strong>CPF:</strong> @Model.Cliente.CPF</p>
+    <p><strong>Endereço:</strong> @Model.Cliente.Endereco</p>
+    <p><strong>Telefone:</strong> @Model.Cliente.Telefone</p>
+    <p><strong>Email:</strong> @Model.Cliente.Email</p>
+</div>
+
+<div>
+    <h4>Itens do Pedido</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Valor Unitário</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Itens)
+            {
+                <tr>
+                    <td>@item.Nome</td>
+                    <td>@item.Quantidade</td>
+                    <td>@item.Valor.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <h4>Informações do Fornecedor</h4>
+    <p><strong>Nome:</strong> @Model.Fornecedor.Nome</p>
+    <p><strong>Endereço:</strong> @Model.Fornecedor.Endereco</p>
+    <p><strong>Margem de Desconto:</strong> @Model.Fornecedor.MargemDesconto.ToString("P")</p>
+    <p><strong>Regime Fiscal:</strong> @Model.Fornecedor.RegimeFiscal</p>
+    <p><strong>CNPJ:</strong> @Model.Fornecedor.CNPJ</p>
+</div>
+
+<a href="@Url.Action("Index")" class="btn btn-secondary">Voltar</a>
