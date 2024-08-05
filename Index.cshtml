@@ -1,0 +1,31 @@
+@model IEnumerable<Pedido>
+
+<h2>Lista de Pedidos</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Status</th>
+            <th>Data de Entrada</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pedido in Model)
+        {
+            <tr>
+                <td>@pedido.Id</td>
+                <td>@pedido.Cliente.Nome</td>
+                <td>@pedido.Status</td>
+                <td>@pedido.DataEntrada.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a href="@Url.Action("Detalhes", new { id = pedido.Id })">Detalhes</a> |
+                    <a href="@Url.Action("Editar", new { id = pedido.Id })">Editar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Novo")" class="btn btn-primary">Novo Pedido</a>
