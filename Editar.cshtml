@@ -1,0 +1,17 @@
+@model Pedido
+
+<h2>Editar Pedido</h2>
+
+<form asp-action="Editar">
+    <div class="form-group">
+        <label for="status">Status</label>
+        <input type="text" class="form-control" id="status" name="Status" value="@Model.Status" />
+    </div>
+    <div class="form-group">
+        <label for="responsavel">Responsável</label>
+        <input type="text" class="form-control" id="responsavel" name="Responsavel" value="@Model.Responsavel" />
+    </div>
+    <!-- Adicione outros campos conforme necessário -->
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+</form>
